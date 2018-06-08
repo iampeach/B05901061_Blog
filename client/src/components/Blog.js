@@ -7,6 +7,7 @@ class Blog extends Component {
     super(props)
     this.state = {
       initialized: false,
+      error: false,
       articles: {
         titles: [],
         bodies: []
@@ -33,21 +34,20 @@ class Blog extends Component {
     }
     catch(err) {
      console.log('fetch failed', err)
+     this.setState({ error: true })
     }
   }
   changeCurArticle = id => {
     this.setState({ curArticle: id })
   }
   render() {
-    const { initialized } = this.state
-    return (
+    const { initialized, error } = this.state
+    if (error) return(<p style={{padding: '100px'}}> Error </p>)
+    if (!initialized) return (<p style={{padding: '100px'}}> Loading... </p>)
+    return(
       <div>
-        {initialized
-        ? <div>
-            <ArticleList titles={this.state.articles.titles} onClick={this.changeCurArticle} />
-            <Articles articles={this.state.articles} curArticle={this.state.curArticle} />
-          </div>
-        : <p style={{padding: '100px'}}> Loading... </p> }
+        <ArticleList titles={this.state.articles.titles} onClick={this.changeCurArticle} />
+        <Articles articles={this.state.articles} curArticle={this.state.curArticle} />
       </div>
     )
   }

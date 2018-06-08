@@ -38,7 +38,6 @@ app.use('/', (req, res, next) => {
 })
 
 app.get('/', async (req, res,next) => {
-  console.log(data)
   res.json(data)
   next()
 })
