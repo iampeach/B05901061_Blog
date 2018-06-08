@@ -1,3 +1,8 @@
-# dependencies
-/node_modules
+node_modules/*
+package-lock.json
+client/README.md
+client/node_modules/*
+client/yarn.lock
+client/package-lock.json
+client/yarn-error.log
 
