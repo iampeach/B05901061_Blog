@@ -1,7 +1,5 @@
-var express = require('express');
-var socket = require('socket.io');
-
-var app = express();
+var express = require('express')
+var app = express()
 
 var
 data = {
