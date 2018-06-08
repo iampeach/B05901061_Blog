@@ -4,14 +4,20 @@ import Blog from './Blog'
 import Login from './Login'
 
 class Content extends Component {
-  login = user => {
-    this.props.login(user)
-  }
   render(){
     return (
       <Switch>
-        <Route exact path='/' component={Blog} />
-        <Route exact path='/login' render={(props)=><Login login={this.login} />} />
+        <Route 
+          exact path='/' 
+          render={(props)=>
+            <Blog 
+              initialize={this.props.initialize} 
+              articles={this.props.articles}
+              initialized={this.props.initialized}
+              error={this.props.error}
+            />} 
+        />
+        <Route exact path='/login' render={(props)=><Login login={this.props.login} refresh={this.fetchData} />} />
       </Switch>
     )
   }

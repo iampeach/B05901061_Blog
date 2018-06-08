@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
 
-const refresh = () => {
-  window.location = '/'
-}
-
 class LeftElement extends Component {
   render() {
     const left = {
@@ -12,7 +8,7 @@ class LeftElement extends Component {
     }
     return (
       <div style={left}>
-        <h1 onClick={refresh}> Blog Title </h1>
+        <h1 onClick={this.props.refresh}> Blog Title </h1>
       </div>
     )
   }

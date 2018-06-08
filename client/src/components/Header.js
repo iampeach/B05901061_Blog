@@ -9,7 +9,6 @@ class Header extends Component {
       width: '100%',
       height: '100px',
       backgroundColor: 'white',
-      //boxShadow: '1px 0px 5px #262626'
     }
     const header = {
       margin: '0 auto',
@@ -18,7 +17,7 @@ class Header extends Component {
     return (
       <div style={metabar}>
         <div style={header}>
-          <LeftElement />
+          <LeftElement refresh={this.props.refresh}/>
           <RightElement loggedIn={this.props.loggedIn} username={this.props.username} />
         </div>
       </div>
