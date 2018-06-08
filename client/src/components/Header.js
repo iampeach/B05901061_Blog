@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import RightElement from './RightElement'
+import LeftElement from './LeftElement'
 
 class Header extends Component {
   render() {
@@ -22,28 +24,6 @@ class Header extends Component {
       </div>
     )
   }
-}
-
-const LeftElement = () => {
-  const left = {
-    float: 'left',
-  }
-  return (
-    <div style={left}>
-      <h1> Blog Title </h1>
-    </div>
-  )
-}
-
-const RightElement = ({loggedIn, username}) => {
-  const right = {
-    float: 'right',
-  }
-  return (
-    <div style={right}>
-      <h1> { `${username}` } </h1>
-    </div>
-  )
 }
 
 export default Header
