@@ -1,0 +1,12 @@
+.ArticleList::-webkit-scrollbar {
+  display: none;
+}
+
+.ArticleList {
+  margin: 0 auto;
+  padding: 100px 0 0 0;
+  max-width: 1050px;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+}
