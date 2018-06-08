@@ -39,7 +39,6 @@ class Blog extends Component {
     this.setState({ curArticle: id })
   }
   render() {
-    console.log(this.state.articles)
     const { initialized } = this.state
     return (
       <div>

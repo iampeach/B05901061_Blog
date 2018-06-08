@@ -1,29 +1,46 @@
 var express = require('express')
-var app = express()
+var mysql = require("mysql")
 
-var
-data = {
-  titles: [
-    '人生怎麼這麼難',
-    '現在放棄暑假就開始了',
-    '為什麼WEB作業這麼多',
-    '自SA貓貓',
-  ],
-  bodies: [
-    '人生就4這麼難',
-    '暑假開始然後就結束了',
-    '而且跟人生一樣難',
-    '自SA貓貓'
-  ]
+// dataBase
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "00000000"
+})
+
+con.connect(function(err) {
+  if (err) {
+      console.log('connecting error');
+      return;
+  }
+  console.log('connecting success');
+})
+
+var data = {
+  titles: [],
+  bodies: []
 }
 
+con.query('SELECT * FROM blog.admin', (err, rows)=> {
+  if (err) console.log(err)
+  for (let i = 0; i < rows.length; ++i) {
+    data.titles.push(rows[i].titles)
+    data.bodies.push(rows[i].bodies)
+  }
+})
+
+// server
+var app = express()
+
 app.use('/', (req, res, next) => {
-  res.header("Access-Control-Allow-Origin")
+  res.header("Access-Control-Allow-Origin", "*")
   next()
 })
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res,next) => {
+  console.log(data)
   res.json(data)
+  next()
 })
 
 server = app.listen(8080, () => {
