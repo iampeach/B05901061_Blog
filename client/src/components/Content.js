@@ -7,6 +7,7 @@ import EditArticle from './EditArticle'
 
 class Content extends Component {
   render(){
+    console.log(this.props.loggedIn)
     return (
       <Switch>
         <Route 
@@ -22,17 +23,19 @@ class Content extends Component {
         />
         <Route exact path='/login' render={(props)=><Login login={this.props.login} refresh={this.fetchData} />} />
         <Route exact path='/add' render={(props)=><AddArticle />} />
-        <Route 
-          exact path='/edit' 
-          render={(props)=>
-            <EditArticle 
-              initialize={this.props.initialize} 
-              articles={this.props.articles} 
-              initialized={this.props.initialized}
-              error={this.props.error}
-            />
-          }
-        />
+        {(this.props.loggedIn)
+          ? (<Route 
+              exact path='/edit' 
+              render={(props)=>
+                <EditArticle
+                  initialize={this.props.initialize} 
+                  articles={this.props.articles} 
+                  initialized={this.props.initialized}
+                  error={this.props.error}
+                />
+              }
+            />)
+          : (<Redirect from='/edit' to='/login' />)}
         <Redirect from='/del' to='/edit' />
         <Redirect from='/delete' to='/edit' />
       </Switch>

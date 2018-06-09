@@ -42,7 +42,8 @@ class App extends Component {
     return (
       <div>
         <Header loggedIn={this.state.loggedIn} username={this.state.username} refresh={this.getData}/>
-        <Content 
+        <Content
+          loggedIn={this.state.loggedIn}
           login={this.setUser}
           initialize={this.getData} 
           articles={this.state.articles}

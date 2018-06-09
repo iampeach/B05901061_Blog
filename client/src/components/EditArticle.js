@@ -11,7 +11,6 @@ class EditArticle extends Component {
   }
   delData = async title => {
     try {
-      console.log(title)
       const req = {
         method: 'DELETE',
         body: JSON.stringify({
