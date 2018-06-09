@@ -16,19 +16,19 @@ class App extends Component {
       },
     }
   }
-  fetchData = async() => {
-    // Promise
-    /*
-    fetch('http://127.0.0.1:8080')
-      .then(res => res.json())
-      .then(res => this.setState({ articles: res, initialized: true }))
-      .catch((err => console.log(err)))
-    */
-    // Async and Await
+  getData = async() => {
     try {
       const res = await fetch('http://127.0.0.1:8080')
       const json = await res.json()
-      this.setState({ articles: json, initialized: true })
+      var articles = {
+        titles: [],
+        bodies: []
+      }
+      for (let i = 0; i < json.length; ++i){
+        articles.titles.push(json[i].titles)
+        articles.bodies.push(json[i].bodies)
+      }
+      this.setState({ articles: articles, initialized: true })
     }
     catch(err) {
      console.log('fetch failed', err)
@@ -41,10 +41,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header loggedIn={this.state.loggedIn} username={this.state.username} refresh={this.fetchData}/>
+        <Header loggedIn={this.state.loggedIn} username={this.state.username} refresh={this.getData}/>
         <Content 
           login={this.setUser}
-          initialize={this.fetchData} 
+          initialize={this.getData} 
           articles={this.state.articles}
           initialized={this.state.initialized}
           error={this.state.error}
