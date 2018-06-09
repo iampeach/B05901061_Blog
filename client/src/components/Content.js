@@ -22,7 +22,9 @@ class Content extends Component {
           } 
         />
         <Route exact path='/login' render={(props)=><Login login={this.props.login} refresh={this.fetchData} />} />
-        <Route exact path='/add' render={(props)=><AddArticle />} />
+        {(this.props.loggedIn)
+          ? (<Route exact path='/add' render={(props)=><AddArticle />} />)
+          : (<Redirect from='/add' to='/login' />)}
         {(this.props.loggedIn)
           ? (<Route 
               exact path='/edit' 
