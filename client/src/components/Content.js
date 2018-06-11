@@ -11,7 +11,7 @@ class Content extends Component {
     return (
       <Switch>
         <Route 
-          exact path='/' 
+          exact path='/'
           render={(props)=>
             <Blog 
               initialize={this.props.initialize} 
