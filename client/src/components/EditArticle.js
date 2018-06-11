@@ -18,7 +18,7 @@ class EditArticle extends Component {
         }),
         headers: { "Content-Type": "application/json" }
       }
-      await fetch('http://127.0.0.1:8080', req)
+      await fetch('https://blog-ozsjuinoak.now.sh', req)
     }
     catch(err) {
       console.log('fetch failed', err)
@@ -63,7 +63,7 @@ class EditArticle extends Component {
     table.push( <tbody key={1}>{tbody}</tbody> )
 
     return(
-      <div style={{padding: '100px 500px', display: 'flex', flexDirection: 'column'}}>
+      <div style={{padding: '100px 300px', display: 'flex', flexDirection: 'column'}}>
         <table>
           {table}
         </table>

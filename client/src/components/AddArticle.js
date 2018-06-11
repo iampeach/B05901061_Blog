@@ -16,7 +16,7 @@ class AddArticle extends Component {
         }),
         headers: { "Content-Type": "application/json" }
       }
-      await fetch('http://127.0.0.1:8080', req)
+      await fetch('https://blog-ozsjuinoak.now.sh', req)
     }
     catch(err) {
       console.log('fetch failed', err)
@@ -26,7 +26,7 @@ class AddArticle extends Component {
     return(
       <div style={{padding: '100px 500px', display: 'flex', flexDirection: 'column'}}>
         <input type="text" placeholder="title" ref="title" />
-        <input type="text" placeholder="body" ref="body" />
+        <textarea placeholder="body" ref="body" />
         <input type="submit" onClick={()=>this.handleClick()}/>
       </div>
     )

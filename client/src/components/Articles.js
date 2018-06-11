@@ -13,8 +13,8 @@ class Articles extends Component {
     return (
       <div style={outerContainer}>
         <div style={articles}>
-          <h1> {this.props.articles.titles[this.props.curArticle]} </h1>
-          <p> {this.props.articles.bodies[this.props.curArticle]} </p>
+          <h1>{this.props.articles.titles[this.props.curArticle]}</h1>
+          <pre>{this.props.articles.bodies[this.props.curArticle]}</pre>
         </div>
       </div>
     )
