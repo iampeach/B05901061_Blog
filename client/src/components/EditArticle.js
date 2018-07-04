@@ -18,7 +18,7 @@ class EditArticle extends Component {
         }),
         headers: { "Content-Type": "application/json" }
       }
-      await fetch('https://blog-ozsjuinoak.now.sh', req)
+      await fetch('http://localhost:8080', req)
     }
     catch(err) {
       console.log('fetch failed', err)

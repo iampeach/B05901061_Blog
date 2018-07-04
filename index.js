@@ -3,22 +3,31 @@ var bodyParser = require('body-parser')
 const { query } = require('./async-db')
 
 getData = async () => {
-  let sql = 'SELECT * FROM sql12242338.admin'
+  let sql = 'SELECT * FROM blog.b05901061'
   let dataList = await query(sql)
   return dataList
 }
 
 postData = async values => {
-  let sql = 'INSERT INTO sql12242338.admin SET ?'
+  let sql = 'INSERT INTO blog.b05901061 SET ?'
   let dataList = await query(sql, values)
   return dataList
 }
 
 delData = async title => {
-  let sql = 'DELETE FROM sql12242338.admin WHERE titles = \''+ title +'\''
+  let sql = 'DELETE FROM blog.b05901061 WHERE titles = \''+ title +'\''
   let dataList = await query(sql)
   return dataList
 }
+
+init = async () => {
+  let sql = 'USE blog'
+  await query(sql)
+  sql = 'CREATE TABLE b05901061(titles VARCHAR(255), bodies VARCHAR(255))'
+  await query(sql)
+}
+
+init()
 
 // server
 var app = express()

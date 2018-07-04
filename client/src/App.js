@@ -18,7 +18,7 @@ class App extends Component {
   }
   getData = async() => {
     try {
-      const res = await fetch('https://blog-ozsjuinoak.now.sh')
+      const res = await fetch('http://localhost:8080')
       const json = await res.json()
       var articles = {
         titles: [],
